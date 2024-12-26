@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            animation: gradientAnimation 5s infinite alternate;
+        }
+        
+        
+       @keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    33% {
+        background: linear-gradient(135deg, #56ab2f, #a8e063); /* Updated color */
+    }
+    66% {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+    }
+        100% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+}
+
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            /*position: relative;*/
+            width:70%;
+            margin:auto;
+        }
+
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            animation: floating 4s infinite ease-in-out;
+        }
+
+        .container::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .container::after {
+            bottom: -20px;
+            right: -20px;
+        }
+
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(15px);
+            }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            width: 80%;
+            max-width: 320px;
+            margin-bottom: 20px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input[type="text"]:focus {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #feb47b, #ff7e5f);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-message {
+            margin-top: 20px;
+            font-size: 1.8em;
+            color: #fff;
+            text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        .welcome-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 0px;
+            background: black;
+            color: white;
+            margin:0px;
+            overflow:hidden;
+            border-radius:2px;
+        }
+        footer>p {
+        margin:0px;
+        }
+        .upper {
+        height:55vh;
+        width:90%;
+        margin:auto;
+        border:2px solid black;
+        }
+        .lower {
+        height:200vh;
+        width:90%;
+        margin:auto;
+        border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Site</h1>
+        <input type="text" id="nameInput" placeholder="Enter your name here" />
+        <br />
+        <button onclick="submitName()">Submit</button>
+        <p class="welcome-message" id="welcomeMessage"></p>
+    </div>
+
+<footer>
+    <p>&copy; 2024 All Rights Reserved.</p>
+</footer>
+    <script>
+        function submitName() {
+            const name = document.getElementById('nameInput').value;
+            const welcomeMessage = document.getElementById('welcomeMessage');
+
+            if (name.trim() !== "") {
+                welcomeMessage.textContent = `Welcome, ${name}!`;
+                welcomeMessage.classList.add('show');
+                // Redirect to Google
+                setTimeout(() => {
+                    window.location.href = "https://www.google.com";
+                }, 1000); // 2-second delay for user to see the message
+            } else {
+                alert('Please enter a name before submitting.');
+            }
+        }
+    </script>
+</body>
+</html>
